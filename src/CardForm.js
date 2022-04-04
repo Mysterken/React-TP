@@ -19,10 +19,14 @@ export default class CardForm extends Component {
   handleSubmit(event) {
 
     event.preventDefault();
+
+    if (!this.props.checkDone()) return;
+
     const newItem = {
       id: generateUniqueID(),
       titre: this.state.title,
       description: this.state.description,
+      done: false
     }
 
     this.setCards(prev => [...prev, newItem])
